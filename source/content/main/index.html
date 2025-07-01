@@ -1,0 +1,14 @@
+{% extends 'layouts/default/layout.html' %}
+
+{% load i18n %}
+<!-- {% load static %}
+{% load bootstrap5 %} -->
+
+{% block content %}
+    {% if request.user.is_authenticated }
+        {% translate 'Your username is' %} <b>{{ request.user.username }}</b>
+    {% else %}
+        {% translate 'Your are a guest.'%}
+    {% endif %}
+
+{% endblock content %}

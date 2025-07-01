@@ -1,0 +1,15 @@
+{% load i18n %}
+{% translate "Hello" %} {{ user.first_name|default:user.username }},
+
+{% translate "Thank you for creating an account. Please click the link below to activate your account:" %}
+
+http://{{ domain }}/accounts/activate/{{ activation_code }}/
+
+{% translate "If you didn't create this account, please ignore this email." %}
+
+{% translate "Best regards," %}
+{% translate "Registration System Team" %}
+
+{% if not user.is_active %}
+{% translate "P.S. Your account is currently inactive. Please activate your account using the link above." %}
+{% endif %}

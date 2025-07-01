@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Home" %}{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="card-title">{% translate "Welcome to Registration System" %}</h1>
+                        {% if request.user.is_authenticated %}
+                            <p class="card-text">
+                                {% translate 'Your username is' %} <b>{{ request.user.username }}</b>
+                            </p>
+                            <a href="{% url 'accounts:profile' %}" class="btn btn-primary me-2">
+                                {% translate "View Profile" %}
+                            </a>
+                            <a href="{% url 'accounts:logout' %}" class="btn btn-danger">
+                                {% translate "Logout" %}
+                            </a>
+                        {% else %}
+                            <p class="card-text">
+                                {% translate 'You are a guest.' %}
+                            </p>
+                            <div class="mt-3">
+                                <a href="{% url 'accounts:login' %}" class="btn btn-primary me-2">
+                                    {% translate "Login" %}
+                                </a>
+                                <a href="{% url 'accounts:register' %}" class="btn btn-success">
+                                    {% translate "Register" %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
